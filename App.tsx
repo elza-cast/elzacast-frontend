@@ -1,31 +1,30 @@
-import * as React from "react";
-import Routes from "./src/routes";
-import { StatusBar } from "react-native";
+import React from 'react';
+import { StatusBar } from 'react-native';
 import AppLoading from 'expo-app-loading';
 
-import { useFonts, NotoSans_400Regular, NotoSans_700Bold } from "@expo-google-fonts/noto-sans";
-
+// eslint-disable-next-line camelcase
+import { useFonts, NotoSans_400Regular, NotoSans_700Bold } from '@expo-google-fonts/noto-sans';
+import Routes from './src/routes';
 
 function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     NotoSans_400Regular,
-    NotoSans_700Bold
+    NotoSans_700Bold,
   });
 
   if (!fontsLoaded) {
     return <AppLoading />;
-  } else {
-    return (
-      <>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor="transparent"
-          translucent
-        />
-        <Routes />
-      </>
-    );
   }
+  return (
+    <>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <Routes />
+    </>
+  );
 }
 
 export default App;
