@@ -40,7 +40,6 @@ export const Actions = styled.View`
 `;
 
 export const ContainerLogo = styled.View`
-  flex: 1;
   align-items: center;
   justify-content: center;
   margin: 60px 0;
