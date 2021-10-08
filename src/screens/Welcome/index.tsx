@@ -15,9 +15,9 @@ import SmallPinkButton from '../../components/Buttons/SmallPinkButton';
 
 const Welcome = () => (
   <Background>
+    <Title>ELZA CAST</Title>
     <ScrollView showsVerticalScrollIndicator={false}>
       <Container>
-        <Title>ELZA CAST</Title>
         <Modal>
           <Paragraph>Oi amada!</Paragraph>
           <Paragraph>É a primeira vez que você usa o nosso aplicativo?</Paragraph>

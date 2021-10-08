@@ -16,6 +16,7 @@ export const Title = styled.Text`
   font-size: 36px;
   line-height: 49px;
   margin-bottom: 10%;
+  text-align: center;
   
   color: ${colors.white};
 `;
@@ -42,5 +43,5 @@ export const ContainerLogo = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin: 10% 0;
+  margin: 20% 0;
 `;
