@@ -6,7 +6,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
+  padding: 0 20px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
 
 export const Title = styled.Text`
@@ -41,4 +41,8 @@ export const ContainerLogo = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+`;
+
+export const ContainerParagraphs = styled.View`
+  display: flex;
 `;

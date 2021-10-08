@@ -20,8 +20,7 @@ const Welcome = () => (
         <Paragraph>Oi amada!</Paragraph>
         <Paragraph>É a primeira vez que você usa o nosso aplicativo?</Paragraph>
         <Paragraph>Se sim, por favor, crie a sua conta para a gente se conhecer melhor.</Paragraph>
-        {/* eslint-disable-next-line max-len */}
-        <Paragraph>Se não, espero que você esteja bem e saiba que estamos aqui pra te ajudar!</Paragraph>
+        <Paragraph>Se não, espero que você esteja bem. Estamos aqui pra te ajudar!</Paragraph>
         <ContainerLogo>
           <HandLogo />
         </ContainerLogo>

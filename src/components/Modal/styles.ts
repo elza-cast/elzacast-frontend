@@ -3,10 +3,10 @@ import colors from '../../styles/colors';
 
 export const Container = styled.View`
   background-color: ${colors.white};
-  padding: 10% 8%;
+  padding: 10% 6%;
   border-radius: 15px;
-  width: 335px;
-  height: 605px;
+  overflow: scroll;
+  height: 88%;
   
   border: 1px solid ${colors.gray_light}
 `;
