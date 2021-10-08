@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import {
   Container, Title, Paragraph, Actions, ContainerLogo,
 } from './styles';
@@ -14,22 +15,25 @@ import SmallPinkButton from '../../components/Buttons/SmallPinkButton';
 
 const Welcome = () => (
   <Background>
-    <Container>
-      <Title>ELZA CAST</Title>
-      <Modal>
-        <Paragraph>Oi amada!</Paragraph>
-        <Paragraph>É a primeira vez que você usa o nosso aplicativo?</Paragraph>
-        <Paragraph>Se sim, por favor, crie a sua conta para a gente se conhecer melhor.</Paragraph>
-        <Paragraph>Se não, espero que você esteja bem. Estamos aqui pra te ajudar!</Paragraph>
-        <ContainerLogo>
-          <HandLogo />
-        </ContainerLogo>
-        <Actions>
-          <SmallPurpleButton>Criar Conta</SmallPurpleButton>
-          <SmallPinkButton>Entrar</SmallPinkButton>
-        </Actions>
-      </Modal>
-    </Container>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <Container>
+        <Title>ELZA CAST</Title>
+        <Modal>
+          <Paragraph>Oi amada!</Paragraph>
+          <Paragraph>É a primeira vez que você usa o nosso aplicativo?</Paragraph>
+          {/* eslint-disable-next-line max-len */}
+          <Paragraph>Se sim, por favor, crie a sua conta para a gente se conhecer melhor.</Paragraph>
+          <Paragraph>Se não, espero que você esteja bem. Estamos aqui pra te ajudar!</Paragraph>
+          <ContainerLogo>
+            <HandLogo />
+          </ContainerLogo>
+          <Actions>
+            <SmallPurpleButton>Criar Conta</SmallPurpleButton>
+            <SmallPinkButton>Entrar</SmallPinkButton>
+          </Actions>
+        </Modal>
+      </Container>
+    </ScrollView>
   </Background>
 );
 

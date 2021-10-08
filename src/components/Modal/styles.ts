@@ -6,7 +6,6 @@ export const Container = styled.View`
   padding: 10% 6%;
   border-radius: 15px;
   overflow: scroll;
-  height: 88%;
   
   border: 1px solid ${colors.gray_light}
 `;
