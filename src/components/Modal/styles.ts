@@ -7,4 +7,6 @@ export const Container = styled.View`
   border-radius: 15px;
   width: 335px;
   height: 605px;
+  
+  border: 1px solid ${colors.gray_light}
 `;
