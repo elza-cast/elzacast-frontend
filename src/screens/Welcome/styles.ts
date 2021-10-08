@@ -34,8 +34,6 @@ export const Actions = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  
-  bottom: 0;
 `;
 
 export const ContainerLogo = styled.View`
