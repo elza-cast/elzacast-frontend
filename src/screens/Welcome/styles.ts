@@ -42,9 +42,5 @@ export const ContainerLogo = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin: 15% 0;
-`;
-
-export const ContainerParagraphs = styled.View`
-  display: flex;
+  margin: 10% 0;
 `;
