@@ -1,0 +1,71 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["~", "./src"]
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".spec.js",
+          ".spec.tsx",
+          ".spec.ts"
+        ]
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "babel-module": {}
+    }
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-module-boundary-types": ["off"],
+    "react/jsx-props-no-spreading": ["off", {}],
+    "react/require-default-props": ["off", {}],
+    "arrow-body-style": ["error", "as-needed"],
+    "camelcase": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "@typescript-eslint/no-explicit-any": ["warn"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.spec.ts", "**/*.test.tsx", "**/*.spec.tsx"]}]
+  }
+}
