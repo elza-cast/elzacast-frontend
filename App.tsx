@@ -1,10 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import AppLoading from 'expo-app-loading';
 
 // eslint-disable-next-line camelcase
 import { useFonts, NotoSans_400Regular, NotoSans_700Bold } from '@expo-google-fonts/noto-sans';
 import Routes from './src/routes';
+import Splash from './src/screens/Splash';
 
 function App() {
   const [fontsLoaded] = useFonts({
@@ -12,9 +12,6 @@ function App() {
     NotoSans_700Bold,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
   return (
     <>
       <StatusBar
@@ -22,7 +19,9 @@ function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      { fontsLoaded ? (
+        <Routes />
+      ) : <Splash /> }
     </>
   );
 }
