@@ -27,7 +27,7 @@ export const Paragraph = styled.Text`
   line-height: 25px;
   margin-bottom: 8%;
 
-  color: #6E6680;
+  color: ${colors.gray_dark};
 `;
 
 export const Actions = styled.View`
