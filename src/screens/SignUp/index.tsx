@@ -9,13 +9,15 @@ import {
   Alert,
 } from "react-native";
 import * as Yup from "yup";
+import { useNavigation } from '@react-navigation/native';
 import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
 import { Container, Title } from "./styles";
-import LargePurpleButton from "../../components/Buttons/LargePurpleButton";
-
 import getValidationErrors from "../../utils/getValidationErrors";
+import SmallPurpleButton from "../../components/Buttons/SmallPurpleButton";
+import { Actions } from "./styles";
+import SmallWhiteButton from "../../components/Buttons/SmallWhiteButton";
 
 interface SignUpFormData {
   name: string;
@@ -28,6 +30,7 @@ const SignUp: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const passwordInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     Keyboard.addListener("keyboardDidShow", () => {
@@ -127,13 +130,24 @@ const SignUp: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               />
-              <LargePurpleButton
-                onPress={() => {
-                  formRef.current?.submitForm();
-                }}
-              >
-                Criar
-              </LargePurpleButton>
+              <Actions>
+                <SmallWhiteButton
+                  onPress={() => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    navigation.pop();
+                  }}
+                >
+                  Voltar
+                </SmallWhiteButton>
+                <SmallPurpleButton
+                  onPress={() => {
+                    formRef.current?.submitForm();
+                  }}
+                >
+                  Criar conta
+                </SmallPurpleButton>
+              </Actions>
             </Form>
           </Container>
         </ScrollView>
