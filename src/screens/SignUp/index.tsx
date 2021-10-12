@@ -19,7 +19,6 @@ import React, {
     Title,
   } from './styles';
   import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
-//   import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
   
   import getValidationErrors from '../../utils/getValidationErrors';
   
