@@ -25,6 +25,7 @@ import React, {
   interface SignUpFormData {
       email: string;
       password: string;
+      password_2: string;
   }
   
   const SignUp: React.FC = () => {
