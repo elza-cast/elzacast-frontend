@@ -49,6 +49,7 @@ import React, {
           const schema = Yup.object().shape({
             phone: Yup.string().required('Telefone obrigatório'),
             password: Yup.string().required('Senha obrigatória'),
+            password_2: Yup.string().required('Senha obrigatória'),
           });
   
           await schema.validate(data, {
