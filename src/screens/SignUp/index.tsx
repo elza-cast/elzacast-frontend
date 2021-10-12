@@ -114,7 +114,7 @@ const SignUp: React.FC = () => {
                 name="password"
                 icon="lock"
                 placeholder="Senha"
-                returnKeyType="send"
+                returnKeyType="next"
                 onSubmitEditing={() => {
                   passwordInputRef.current?.focus();
                 }}
