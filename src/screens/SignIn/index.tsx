@@ -121,14 +121,10 @@ const SignIn: React.FC = () => {
               <LargeWhiteButton onPress={() => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
-                navigation.navigate('Success') // , { 
-                //   title: 'Bem Vinda!',
-                //   message: 'Agora a gente pode te ajudar!',
-                //   buttonText: 'Entendi'
-                // });
+                navigation.navigate('SignUp');
               }}
               >
-                Criar Conta
+                Criar conta
               </LargeWhiteButton>
             </Form>
           </Container>
