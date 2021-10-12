@@ -10,6 +10,7 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
@@ -32,6 +33,7 @@ const SignIn: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const passwordInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
@@ -116,7 +118,18 @@ const SignIn: React.FC = () => {
               >
                 Entrar
               </LargePurpleButton>
-              <LargeWhiteButton>Criar uma conta</LargeWhiteButton>
+              <LargeWhiteButton onPress={() => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                navigation.navigate('Success') // , { 
+                //   title: 'Bem Vinda!',
+                //   message: 'Agora a gente pode te ajudar!',
+                //   buttonText: 'Entendi'
+                // });
+              }}
+              >
+                Criar Conta
+              </LargeWhiteButton>
             </Form>
           </Container>
         </ScrollView>
