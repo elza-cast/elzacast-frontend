@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, Title, Message } from "./styles";
+import { Container, Image, Title, Message, Text } from "./styles";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Done from "../../assets/done.svg";
-import SmallPurpleButton from "../../components/Buttons/SmallPurpleButton";
+import LargePurpleButton from "../../components/Buttons/LargePurpleButton";
 
 
 function Success({ route }) {
@@ -11,10 +11,14 @@ function Success({ route }) {
 
   return (
     <Container>
-      <Done />
-      <Title>{title}</Title>
-      <Message>{message}</Message>
-      <SmallPurpleButton>{buttonText}</SmallPurpleButton>
+      <Image>
+        <Done style={Done}/>
+      </Image>
+      <Text>
+        <Title>{title}</Title>
+        <Message>{message}</Message>
+      </Text>
+      <LargePurpleButton>{buttonText}</LargePurpleButton>
     </Container>
 
   );
