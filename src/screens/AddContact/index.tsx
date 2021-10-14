@@ -16,6 +16,7 @@ import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input';
 import {
+  Actions,
   Container,
   Title,
 } from './styles';
@@ -23,15 +24,18 @@ import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
 import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
+import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
 
 interface SignInFormData {
+    name: string;
     phone: string;
-    password: string;
 }
 
-const SignIn: React.FC = () => {
+const AddContact: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
-  const passwordInputRef = useRef<TextInput>(null);
+  const nameInputRef = useRef<TextInput>(null);
+  const phoneInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -50,8 +54,8 @@ const SignIn: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
           phone: Yup.string().required('Telefone obrigatório'),
-          password: Yup.string().required('Senha obrigatória'),
         });
 
         await schema.validate(data, {
@@ -59,6 +63,14 @@ const SignIn: React.FC = () => {
         });
 
         // TODO: Função SigIn será inserida aqui
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        navigation.navigate('Success', {
+          title: 'Que bom!',
+          message: 'O contato foi adicionado a sua lista!',
+          buttonText: 'Entendi',
+          routeName: 'AddContact',
+        });
       } catch (err) {
         let errorMessage = '';
 
@@ -77,7 +89,7 @@ const SignIn: React.FC = () => {
         }
         Alert.alert(
           'Erro na autenticação',
-          'Ocorreu um erro ao fazer login, cheque as credenciais.',
+          'Ocorreu um erro ao criar o contato, cheque as credenciais.',
         );
       }
     },
@@ -96,45 +108,48 @@ const SignIn: React.FC = () => {
         >
           <Container>
             <View>
-              <Title>Acesse sua conta</Title>
+              <Title>Adicionar contato</Title>
             </View>
             <Form ref={formRef} onSubmit={handleSignIn}>
+              <Input
+                ref={nameInputRef}
+                secureTextEntry
+                name="name"
+                icon="user"
+                placeholder="Nome ou apelido"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  nameInputRef.current?.focus();
+                }}
+              />
               <Input
                 keyboardType="numeric"
                 name="phone"
                 icon="phone"
                 placeholder="Telefone"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
                 returnKeyType="send"
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
                 }}
               />
-              <LargePurpleButton onPress={() => {
-                // formRef.current?.submitForm();
-                navigation.navigate('AddContact');
-              }}
-              >
-                Entrar
-              </LargePurpleButton>
-              <LargeWhiteButton onPress={() => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                navigation.navigate('SignUp');
-              }}
-              >
-                Criar conta
-              </LargeWhiteButton>
+              <Actions>
+                <SmallWhiteButton
+                  onPress={() => {
+                    formRef.current?.submitForm();
+                  }}
+                >
+                  Cadastrar
+                </SmallWhiteButton>
+                <SmallPurpleButton
+                  onPress={() => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    navigation.pop();
+                  }}
+                >
+                  Voltar
+                </SmallPurpleButton>
+              </Actions>
             </Form>
           </Container>
         </ScrollView>
@@ -143,4 +158,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default AddContact;

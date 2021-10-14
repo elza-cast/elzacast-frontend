@@ -7,6 +7,7 @@ import Welcome from './screens/Welcome';
 import SignIn from './screens/SignIn';
 import Success from './screens/Success';
 import SignUp from './screens/SignUp';
+import AddContact from './screens/AddContact';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,27 +21,26 @@ const Routes = () => (
       <Stack.Screen
         name="Welcome"
         component={Welcome}
-        options={{ title: 'Welcome' }}
       />
       <Stack.Screen
         name="SignIn"
         component={SignIn}
-        options={{ title: 'SignIn' }}
       />
       <Stack.Screen
         name="SignUp"
         component={SignUp}
-        options={{ title: 'SignUp' }}
       />
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ title: 'Home' }}
       />
       <Stack.Screen
         name="Success"
         component={Success}
-        options={{ title: 'Success' }}
+      />
+      <Stack.Screen
+        name="AddContact"
+        component={AddContact}
       />
     </Stack.Navigator>
   </NavigationContainer>
