@@ -21,8 +21,9 @@ import {
   Actions,
 } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
-import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
-import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
+
+import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
+import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 
 interface SignUpFormData {
   name: string;
@@ -159,7 +160,7 @@ const SignUp: React.FC = () => {
                 }}
               />
               <Actions>
-                <SmallWhiteButton
+                <MediumWhiteButton
                   onPress={() => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
@@ -167,14 +168,14 @@ const SignUp: React.FC = () => {
                   }}
                 >
                   Voltar
-                </SmallWhiteButton>
-                <SmallPurpleButton
+                </MediumWhiteButton>
+                <MediumPurpleButton
                   onPress={() => {
                     formRef.current?.submitForm();
                   }}
                 >
                   Criar conta
-                </SmallPurpleButton>
+                </MediumPurpleButton>
               </Actions>
             </Form>
           </Container>
