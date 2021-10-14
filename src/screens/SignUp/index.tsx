@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState, useEffect, useCallback, useRef,
+} from 'react';
 import {
   View,
   ScrollView,
@@ -7,23 +9,22 @@ import {
   Keyboard,
   TextInput,
   Alert,
-} from "react-native";
-import * as Yup from "yup";
+} from 'react-native';
+import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
-import { Form } from "@unform/mobile";
-import { FormHandles } from "@unform/core";
-import Input from "../../components/Input";
-import { Container, Title } from "./styles";
-import getValidationErrors from "../../utils/getValidationErrors";
-import SmallPurpleButton from "../../components/Buttons/SmallPurpleButton";
-import { Actions } from "./styles";
-import SmallWhiteButton from "../../components/Buttons/SmallWhiteButton";
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
+import Input from '../../components/Input';
+import { Container, Title, Actions } from './styles';
+import getValidationErrors from '../../utils/getValidationErrors';
+import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
+import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
 
 interface SignUpFormData {
   name: string;
   email: string;
   password: string;
-  password_2: string;
+  password2: string;
 }
 
 const SignUp: React.FC = () => {
@@ -33,10 +34,10 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", () => {
+    Keyboard.addListener('keyboardDidShow', () => {
       setKeyboard(true);
     });
-    Keyboard.addListener("keyboardDidHide", () => {
+    Keyboard.addListener('keyboardDidHide', () => {
       setKeyboard(false);
     });
   }, []);
@@ -46,10 +47,10 @@ const SignUp: React.FC = () => {
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
-        name: Yup.string().required("Nome obrigatório"),
-        phone: Yup.string().required("Telefone obrigatório"),
-        password: Yup.string().required("Senha obrigatória"),
-        password_2: Yup.string().required("Senha obrigatória"),
+        name: Yup.string().required('Nome obrigatório'),
+        phone: Yup.string().required('Telefone obrigatório'),
+        password: Yup.string().required('Senha obrigatória'),
+        password2: Yup.string().required('Senha obrigatória'),
       });
 
       await schema.validate(data, {
@@ -66,8 +67,8 @@ const SignUp: React.FC = () => {
         return;
       }
       Alert.alert(
-        "Erro na autenticação",
-        "Ocorreu um erro ao fazer a conta, cheque as credenciais."
+        'Erro na autenticação',
+        'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
       );
     }
   }, []);
@@ -75,7 +76,7 @@ const SignUp: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -122,7 +123,7 @@ const SignUp: React.FC = () => {
               <Input
                 ref={passwordInputRef}
                 secureTextEntry
-                name="password_2"
+                name="password2"
                 icon="lock"
                 placeholder="Confirme a senha"
                 returnKeyType="send"
