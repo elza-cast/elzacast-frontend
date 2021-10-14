@@ -85,7 +85,7 @@ const Home = () => {
           <ContentModal>
             <Title>Queremos ouvir sua voz!</Title>
             {/* eslint-disable-next-line max-len */}
-            <Paragraph>Alerte a sua lista de contatos ou acione a amergência sempre que precisar</Paragraph>
+            <Paragraph>Alerte a sua lista de contatos ou acione a emergência sempre que precisar</Paragraph>
             <Actions>
               <EmergencyButton onPress={() => emergencyCall()}>
                 <ContainerButton>
