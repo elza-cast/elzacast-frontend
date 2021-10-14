@@ -42,5 +42,6 @@ export const Actions = styled.View`
 export const ContainerLogo = styled.View`
   align-items: center;
   justify-content: center;
-  margin: 60px 0;
+  max-width: 100%;
+  margin: 2% 0 10%;
 `;
