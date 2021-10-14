@@ -95,7 +95,8 @@ const SignUp: React.FC = () => {
           'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
         );
       }
-    }, []);
+    }, [],
+  );
   return (
     <>
       <KeyboardAvoidingView
@@ -113,63 +114,63 @@ const SignUp: React.FC = () => {
             </View>
             <Form ref={formRef} onSubmit={handleSignUp}>
               <Input
-                  keyboardType="default"
-                  name="name"
-                  icon="user"
-                  autoCapitalize="words"
-                  placeholder="Nome ou apelido"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {
-                    phoneInputRef.current?.focus();
-                  }}
+                keyboardType="default"
+                name="name"
+                icon="user"
+                autoCapitalize="words"
+                placeholder="Nome ou apelido"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  phoneInputRef.current?.focus();
+                }}
               />
               <Input
-                  ref={phoneInputRef}
-                  keyboardType="numeric"
-                  name="phone"
-                  icon="phone"
-                  placeholder="Telefone"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {
-                    passwordInputRef.current?.focus();
-                  }}
+                ref={phoneInputRef}
+                keyboardType="numeric"
+                name="phone"
+                icon="phone"
+                placeholder="Telefone"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordInputRef.current?.focus();
+                }}
               />
               <Input
-                  ref={passwordInputRef}
-                  secureTextEntry
-                  name="password"
-                  icon="lock"
-                  placeholder="Senha"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {
-                    passwordConfirmationInputRef.current?.focus();
-                  }}
+                ref={passwordInputRef}
+                secureTextEntry
+                name="password"
+                icon="lock"
+                placeholder="Senha"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordConfirmationInputRef.current?.focus();
+                }}
               />
               <Input
-                  ref={passwordConfirmationInputRef}
-                  secureTextEntry
-                  name="password_confirmation"
-                  icon="lock"
-                  placeholder="Confirme a senha"
-                  returnKeyType="send"
-                  onSubmitEditing={() => {
-                    formRef.current?.submitForm();
-                  }}
+                ref={passwordConfirmationInputRef}
+                secureTextEntry
+                name="password_confirmation"
+                icon="lock"
+                placeholder="Confirme a senha"
+                returnKeyType="send"
+                onSubmitEditing={() => {
+                  formRef.current?.submitForm();
+                }}
               />
               <Actions>
                 <SmallWhiteButton
-                    onPress={() => {
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      navigation.pop();
-                    }}
+                  onPress={() => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    navigation.pop();
+                  }}
                 >
                   Voltar
                 </SmallWhiteButton>
                 <SmallPurpleButton
-                    onPress={() => {
-                      formRef.current?.submitForm();
-                    }}
+                  onPress={() => {
+                    formRef.current?.submitForm();
+                  }}
                 >
                   Criar conta
                 </SmallPurpleButton>
