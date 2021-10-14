@@ -18,20 +18,24 @@ import Input from '../../components/Input';
 import {
   Container,
   Title,
+  Actions,
 } from './styles';
-import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
-
 import getValidationErrors from '../../utils/getValidationErrors';
+import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
+import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
 
 interface SignUpFormData {
   email: string;
   password: string;
-  password_2: string;
+  // eslint-disable-next-line camelcase
+  password_confirmation: string;
 }
 
 const SignUp: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
+  const phoneInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const passwordConfirmationInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -50,9 +54,11 @@ const SignUp: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
           phone: Yup.string().required('Telefone obrigatório'),
           password: Yup.string().required('Senha obrigatória'),
-          password_2: Yup.string().required('Senha obrigatória'),
+          password_confirmation: Yup.string().oneOf([
+            null, Yup.ref('password')], 'As senhas precisam ser iguais'),
         });
 
         await schema.validate(data, {
@@ -69,10 +75,18 @@ const SignUp: React.FC = () => {
           routeName: 'SignIn',
         });
       } catch (err) {
+        let errorMessage = '';
+
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          Object.keys(errors).forEach((item) => {
+            errorMessage += `\n${errors[item]}`;
+          });
+
+          Alert.alert('Erro de validação', `${errorMessage}`);
 
           return;
         }
@@ -81,9 +95,7 @@ const SignUp: React.FC = () => {
           'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
         );
       }
-    },
-    [],
-  );
+    }, []);
   return (
     <>
       <KeyboardAvoidingView
@@ -101,43 +113,67 @@ const SignUp: React.FC = () => {
             </View>
             <Form ref={formRef} onSubmit={handleSignUp}>
               <Input
-                keyboardType="numeric"
-                name="phone"
-                icon="phone"
-                placeholder="Telefone"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
+                  keyboardType="default"
+                  name="name"
+                  icon="user"
+                  autoCapitalize="words"
+                  placeholder="Nome ou apelido"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    phoneInputRef.current?.focus();
+                  }}
               />
               <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                returnKeyType="send"
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
+                  ref={phoneInputRef}
+                  keyboardType="numeric"
+                  name="phone"
+                  icon="phone"
+                  placeholder="Telefone"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordInputRef.current?.focus();
+                  }}
               />
               <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password_2"
-                icon="lock"
-                placeholder="Confirme a senha"
-                returnKeyType="send"
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
+                  ref={passwordInputRef}
+                  secureTextEntry
+                  name="password"
+                  icon="lock"
+                  placeholder="Senha"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordConfirmationInputRef.current?.focus();
+                  }}
               />
-              <LargePurpleButton onPress={() => {
-                formRef.current?.submitForm();
-              }}
-              >
-                Criar
-              </LargePurpleButton>
+              <Input
+                  ref={passwordConfirmationInputRef}
+                  secureTextEntry
+                  name="password_confirmation"
+                  icon="lock"
+                  placeholder="Confirme a senha"
+                  returnKeyType="send"
+                  onSubmitEditing={() => {
+                    formRef.current?.submitForm();
+                  }}
+              />
+              <Actions>
+                <SmallWhiteButton
+                    onPress={() => {
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      navigation.pop();
+                    }}
+                >
+                  Voltar
+                </SmallWhiteButton>
+                <SmallPurpleButton
+                    onPress={() => {
+                      formRef.current?.submitForm();
+                    }}
+                >
+                  Criar conta
+                </SmallPurpleButton>
+              </Actions>
             </Form>
           </Container>
         </ScrollView>

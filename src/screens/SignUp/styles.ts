@@ -11,6 +11,14 @@ export const Container = styled.View`
   background-color: ${colors.background};
 `;
 
+export const Actions = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  top: 40%;
+`;
+
 export const Title = styled.Text`
   font-size: 24px;
   color: ${colors.black};
