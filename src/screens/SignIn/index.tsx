@@ -122,6 +122,8 @@ const SignIn: React.FC = () => {
               />
               <LargePurpleButton onPress={() => {
                 // formRef.current?.submitForm();
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 navigation.navigate('AddContact');
               }}
               >

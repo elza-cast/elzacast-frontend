@@ -20,12 +20,10 @@ import {
   Container,
   Title,
 } from './styles';
-import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
-import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
-import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
+import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
+import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
 
 interface SignInFormData {
     name: string;
@@ -35,7 +33,6 @@ interface SignInFormData {
 const AddContact: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const nameInputRef = useRef<TextInput>(null);
-  const phoneInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -133,14 +130,7 @@ const AddContact: React.FC = () => {
                 }}
               />
               <Actions>
-                <SmallWhiteButton
-                  onPress={() => {
-                    formRef.current?.submitForm();
-                  }}
-                >
-                  Cadastrar
-                </SmallWhiteButton>
-                <SmallPurpleButton
+                <MediumWhiteButton
                   onPress={() => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
@@ -148,7 +138,14 @@ const AddContact: React.FC = () => {
                   }}
                 >
                   Voltar
-                </SmallPurpleButton>
+                </MediumWhiteButton>
+                <MediumPurpleButton
+                  onPress={() => {
+                    formRef.current?.submitForm();
+                  }}
+                >
+                  Cadastrar
+                </MediumPurpleButton>
               </Actions>
             </Form>
           </Container>
