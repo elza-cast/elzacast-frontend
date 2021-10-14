@@ -93,8 +93,8 @@ const SignUp: React.FC = () => {
           return;
         }
         Alert.alert(
-          'Erro na autenticação',
-          'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
+          'Erro',
+          'Ocorreu um erro ao criar a conta.',
         );
       }
     }, [],

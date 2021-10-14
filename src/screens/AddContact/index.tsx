@@ -25,14 +25,14 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
 
-interface SignInFormData {
+interface ContactFormData {
     name: string;
     phone: string;
 }
 
 const AddContact: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
-  const nameInputRef = useRef<TextInput>(null);
+  const phoneInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -46,7 +46,7 @@ const AddContact: React.FC = () => {
   }, []);
 
   const handleSignIn = useCallback(
-    async (data: SignInFormData) => {
+    async (data: ContactFormData) => {
       try {
         formRef.current?.setErrors({});
 
@@ -85,8 +85,8 @@ const AddContact: React.FC = () => {
           return;
         }
         Alert.alert(
-          'Erro na autenticação',
-          'Ocorreu um erro ao criar o contato, cheque as credenciais.',
+          'Erro',
+          'Ocorreu um erro ao adicionar o contato.',
         );
       }
     },
@@ -109,17 +109,18 @@ const AddContact: React.FC = () => {
             </View>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
-                ref={nameInputRef}
                 secureTextEntry
                 name="name"
                 icon="user"
-                placeholder="Nome ou apelido"
+                placeholder="Nome"
+                autoCapitalize="words"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  nameInputRef.current?.focus();
+                  phoneInputRef.current?.focus();
                 }}
               />
               <Input
+                ref={phoneInputRef}
                 keyboardType="numeric"
                 name="phone"
                 icon="phone"
