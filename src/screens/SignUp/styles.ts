@@ -19,7 +19,7 @@ export const Actions = styled.View`
   
   bottom: 0;
   position: absolute;
-  margin-bottom: 10%;
+  margin-bottom: 8%;
 `;
 
 export const Title = styled.Text`
