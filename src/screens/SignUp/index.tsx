@@ -24,7 +24,8 @@ interface SignUpFormData {
   name: string;
   email: string;
   password: string;
-  password2: string;
+  // eslint-disable-next-line camelcase
+  password_confirmation: string;
 }
 
 const SignUp: React.FC = () => {
@@ -60,10 +61,18 @@ const SignUp: React.FC = () => {
 
       // TODO: Função SigUp será inserida aqui
     } catch (err) {
+      let errorMessage = '';
+
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
 
         formRef.current?.setErrors(errors);
+
+        Object.keys(errors).forEach((item) => {
+          errorMessage += `\n${errors[item]}`;
+        });
+
+        Alert.alert('Erro de validação', `${errorMessage}`);
 
         return;
       }
@@ -124,7 +133,7 @@ const SignUp: React.FC = () => {
               <Input
                 ref={passwordInputRef}
                 secureTextEntry
-                name="password2"
+                name="password_confirmation"
                 icon="lock"
                 placeholder="Confirme a senha"
                 returnKeyType="send"

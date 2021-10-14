@@ -60,10 +60,18 @@ const SignIn: React.FC = () => {
 
         // TODO: Função SigIn será inserida aqui
       } catch (err) {
+        let errorMessage = '';
+
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          Object.keys(errors).forEach((item) => {
+            errorMessage += `\n${errors[item]}`;
+          });
+
+          Alert.alert('Erro de validação', `${errorMessage}`);
 
           return;
         }
