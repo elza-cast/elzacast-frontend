@@ -29,4 +29,5 @@ export const Message = styled.Text`
   color: ${colors.black};
   font-family: "NotoSans_400Regular";
   margin: 15px 0 20%;
+  text-align: center;
 `;
