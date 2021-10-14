@@ -16,28 +16,23 @@ import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input';
 import {
+  Actions,
   Container,
   Title,
-  Actions,
 } from './styles';
+
 import getValidationErrors from '../../utils/getValidationErrors';
-
-import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
+import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
 
-interface SignUpFormData {
-  name: string;
-  phone: string;
-  password: string;
-  // eslint-disable-next-line camelcase
-  password_confirmation: string;
+interface ContactFormData {
+    name: string;
+    phone: string;
 }
 
-const SignUp: React.FC = () => {
+const AddContact: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const phoneInputRef = useRef<TextInput>(null);
-  const passwordInputRef = useRef<TextInput>(null);
-  const passwordConfirmationInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -50,17 +45,14 @@ const SignUp: React.FC = () => {
     });
   }, []);
 
-  const handleSignUp = useCallback(
-    async (data: SignUpFormData) => {
+  const handleSignIn = useCallback(
+    async (data: ContactFormData) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),
           phone: Yup.string().required('Telefone obrigatório'),
-          password: Yup.string().required('Senha obrigatória'),
-          password_confirmation: Yup.string().oneOf([
-            null, Yup.ref('password')], 'As senhas precisam ser iguais'),
         });
 
         await schema.validate(data, {
@@ -71,10 +63,10 @@ const SignUp: React.FC = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         navigation.navigate('Success', {
-          title: 'Bem Vinda!',
-          message: 'Agora podemos te ajudar!',
+          title: 'Que bom!',
+          message: 'O contato foi adicionado a sua lista!',
           buttonText: 'Entendi',
-          routeName: 'SignIn',
+          routeName: 'AddContact',
         });
       } catch (err) {
         let errorMessage = '';
@@ -94,10 +86,11 @@ const SignUp: React.FC = () => {
         }
         Alert.alert(
           'Erro',
-          'Ocorreu um erro ao criar a conta.',
+          'Ocorreu um erro ao adicionar o contato.',
         );
       }
-    }, [],
+    },
+    [],
   );
   return (
     <>
@@ -112,15 +105,15 @@ const SignUp: React.FC = () => {
         >
           <Container>
             <View>
-              <Title>Crie sua conta</Title>
+              <Title>Adicionar contato</Title>
             </View>
-            <Form ref={formRef} onSubmit={handleSignUp}>
+            <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
-                keyboardType="default"
+                secureTextEntry
                 name="name"
                 icon="user"
+                placeholder="Nome"
                 autoCapitalize="words"
-                placeholder="Nome ou apelido"
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   phoneInputRef.current?.focus();
@@ -132,28 +125,6 @@ const SignUp: React.FC = () => {
                 name="phone"
                 icon="phone"
                 placeholder="Telefone"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordConfirmationInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={passwordConfirmationInputRef}
-                secureTextEntry
-                name="password_confirmation"
-                icon="lock"
-                placeholder="Confirme a senha"
                 returnKeyType="send"
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
@@ -174,7 +145,7 @@ const SignUp: React.FC = () => {
                     formRef.current?.submitForm();
                   }}
                 >
-                  Criar conta
+                  Cadastrar
                 </MediumPurpleButton>
               </Actions>
             </Form>
@@ -185,4 +156,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default AddContact;
