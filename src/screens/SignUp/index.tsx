@@ -30,7 +30,9 @@ interface SignUpFormData {
 
 const SignUp: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
+  const phoneInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const passwordConfirmationInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -106,10 +108,11 @@ const SignUp: React.FC = () => {
                 placeholder="Nome ou apelido"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
+                  phoneInputRef.current?.focus();
                 }}
               />
               <Input
+                ref={phoneInputRef}
                 keyboardType="numeric"
                 name="phone"
                 icon="phone"
@@ -127,11 +130,11 @@ const SignUp: React.FC = () => {
                 placeholder="Senha"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
+                  passwordConfirmationInputRef.current?.focus();
                 }}
               />
               <Input
-                ref={passwordInputRef}
+                ref={passwordConfirmationInputRef}
                 secureTextEntry
                 name="password_confirmation"
                 icon="lock"
