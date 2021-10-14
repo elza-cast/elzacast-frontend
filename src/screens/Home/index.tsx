@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking, Platform, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
   Container,
@@ -31,6 +32,26 @@ import colors from '../../styles/colors';
 
 const Home = () => {
   const navigation = useNavigation();
+
+  function emergencyCall() {
+    const phone = 190;
+    let phoneNumber = '';
+
+    if (Platform.OS !== 'android') {
+      phoneNumber = `telprompt:${phone}`;
+    } else {
+      phoneNumber = `tel:${phone}`;
+    }
+
+    // eslint-disable-next-line consistent-return
+    Linking.canOpenURL(phoneNumber).then((supported) => {
+      if (!supported) {
+        Alert.alert('Número de telefone não disponível');
+      } else {
+        return Linking.openURL(phoneNumber);
+      }
+    }).catch((err) => Alert.alert('Erro', err));
+  }
 
   return (
     <Container>
@@ -66,7 +87,7 @@ const Home = () => {
             {/* eslint-disable-next-line max-len */}
             <Paragraph>Alerte a sua lista de contatos ou acione a amergência sempre que precisar</Paragraph>
             <Actions>
-              <EmergencyButton>
+              <EmergencyButton onPress={() => emergencyCall()}>
                 <ContainerButton>
                   <Awesome
                     name="exclamation-circle"
