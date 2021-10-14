@@ -57,7 +57,7 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      // TODO: Função SigIn será inserida aqui
+      // TODO: Função SigUp será inserida aqui
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);

@@ -14,7 +14,7 @@ export const Container = styled.View`
 export const Actions = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   top: 40%;
 `;
