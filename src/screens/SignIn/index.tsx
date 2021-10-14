@@ -59,6 +59,9 @@ const SignIn: React.FC = () => {
         });
 
         // TODO: Função SigIn será inserida aqui
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        navigation.navigate('Home');
       } catch (err) {
         let errorMessage = '';
 
@@ -121,10 +124,7 @@ const SignIn: React.FC = () => {
                 }}
               />
               <LargePurpleButton onPress={() => {
-                // formRef.current?.submitForm();
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                navigation.navigate('AddContact');
+                formRef.current?.submitForm();
               }}
               >
                 Entrar
