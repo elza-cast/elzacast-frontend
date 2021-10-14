@@ -25,7 +25,8 @@ import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
 import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
 
 interface SignUpFormData {
-  email: string;
+  name: string;
+  phone: string;
   password: string;
   // eslint-disable-next-line camelcase
   password_confirmation: string;

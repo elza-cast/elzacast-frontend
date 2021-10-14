@@ -25,7 +25,7 @@ import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 interface SignInFormData {
-    email: string;
+    phone: string;
     password: string;
 }
 
