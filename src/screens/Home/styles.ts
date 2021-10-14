@@ -112,7 +112,7 @@ export const EmergencyButton = styled.TouchableOpacity`
 
 export const AlertButton = styled.TouchableOpacity`
   width: 125px;
-  height: 105px;
+  height: 125px;
   border-radius: 15px;
   margin-bottom: 15px;
   
@@ -121,10 +121,10 @@ export const AlertButton = styled.TouchableOpacity`
 
 export const ContactsButton = styled.TouchableOpacity`
   width: 125px;
-  height: 105px;
+  height: 125px;
   border-radius: 15px;
   margin-bottom: 15px;
-  border: 1px solid ${colors.gray_light}
+  border: 1px solid ${colors.gray_light};
   
   background-color: ${colors.white};
 `;
