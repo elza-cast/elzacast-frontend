@@ -6,7 +6,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 0 30px ${Platform.OS === 'android' ? 80 : 40}px;
+  padding: 0 20px ${Platform.OS === 'android' ? 80 : 40}px;
   
   background-color: ${colors.background};
 `;
@@ -14,9 +14,12 @@ export const Container = styled.View`
 export const Actions = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  top: 40%;
+  
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 10%;
 `;
 
 export const Title = styled.Text`

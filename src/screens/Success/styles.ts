@@ -5,7 +5,7 @@ import colors from '../../styles/colors';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
+  padding: 0 20px ${Platform.OS === 'android' ? 80 : 40}px;
 `;
 
 export const Image = styled.View`
