@@ -11,6 +11,8 @@ import {
 import Done from '../../assets/done.svg';
 import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const Success = ({ navigation, route }) => {
   const {
     title,
