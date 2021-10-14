@@ -50,7 +50,8 @@ const SignUp: React.FC = () => {
         name: Yup.string().required('Nome obrigatório'),
         phone: Yup.string().required('Telefone obrigatório'),
         password: Yup.string().required('Senha obrigatória'),
-        password2: Yup.string().required('Senha obrigatória'),
+        password_confirmation: Yup.string().oneOf([
+          null, Yup.ref('password')], 'As senhas precisam ser iguais'),
       });
 
       await schema.validate(data, {
@@ -91,7 +92,7 @@ const SignUp: React.FC = () => {
               <Input
                 keyboardType="default"
                 name="name"
-                icon=""
+                icon="user"
                 autoCapitalize="words"
                 placeholder="Nome ou apelido"
                 returnKeyType="next"
