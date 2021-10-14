@@ -10,8 +10,8 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
+import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input';
@@ -25,7 +25,7 @@ import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 interface SignInFormData {
-    email: string;
+    phone: string;
     password: string;
 }
 

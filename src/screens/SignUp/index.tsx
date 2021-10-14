@@ -10,19 +10,23 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
+import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input';
-import { Container, Title, Actions } from './styles';
+import {
+  Container,
+  Title,
+  Actions,
+} from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
 import SmallPurpleButton from '../../components/Buttons/SmallPurpleButton';
 import SmallWhiteButton from '../../components/Buttons/SmallWhiteButton';
 
 interface SignUpFormData {
   name: string;
-  email: string;
+  phone: string;
   password: string;
   // eslint-disable-next-line camelcase
   password_confirmation: string;
@@ -45,45 +49,55 @@ const SignUp: React.FC = () => {
     });
   }, []);
 
-  const handleSignUp = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSignUp = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório'),
-        phone: Yup.string().required('Telefone obrigatório'),
-        password: Yup.string().required('Senha obrigatória'),
-        password_confirmation: Yup.string().oneOf([
-          null, Yup.ref('password')], 'As senhas precisam ser iguais'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      // TODO: Função SigUp será inserida aqui
-    } catch (err) {
-      let errorMessage = '';
-
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-
-        formRef.current?.setErrors(errors);
-
-        Object.keys(errors).forEach((item) => {
-          errorMessage += `\n${errors[item]}`;
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          phone: Yup.string().required('Telefone obrigatório'),
+          password: Yup.string().required('Senha obrigatória'),
+          password_confirmation: Yup.string().oneOf([
+            null, Yup.ref('password')], 'As senhas precisam ser iguais'),
         });
 
-        Alert.alert('Erro de validação', `${errorMessage}`);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-        return;
+        // TODO: Função SigIn será inserida aqui
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        navigation.navigate('Success', {
+          title: 'Bem Vinda!',
+          message: 'Agora podemos te ajudar!',
+          buttonText: 'Entendi',
+          routeName: 'SignIn',
+        });
+      } catch (err) {
+        let errorMessage = '';
+
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current?.setErrors(errors);
+
+          Object.keys(errors).forEach((item) => {
+            errorMessage += `\n${errors[item]}`;
+          });
+
+          Alert.alert('Erro de validação', `${errorMessage}`);
+
+          return;
+        }
+        Alert.alert(
+          'Erro na autenticação',
+          'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
+        );
       }
-      Alert.alert(
-        'Erro na autenticação',
-        'Ocorreu um erro ao fazer a conta, cheque as credenciais.',
-      );
-    }
-  }, []);
+    }, [],
+  );
   return (
     <>
       <KeyboardAvoidingView

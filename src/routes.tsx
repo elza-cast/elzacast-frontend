@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Welcome from './screens/Welcome';
 import SignIn from './screens/SignIn';
+import Success from './screens/Success';
 import SignUp from './screens/SignUp';
 
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,11 @@ const Routes = () => (
         name="Home"
         component={Home}
         options={{ title: 'Home' }}
+      />
+      <Stack.Screen
+        name="Success"
+        component={Success}
+        options={{ title: 'Success' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
