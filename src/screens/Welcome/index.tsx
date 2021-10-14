@@ -32,7 +32,14 @@ const Welcome: React.FC = () => {
               <HandLogo />
             </ContainerLogo>
             <Actions>
-              <SmallPurpleButton>Criar Conta</SmallPurpleButton>
+              <SmallPurpleButton onPress={() => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                navigation.navigate('SignUp');
+              }}
+              >
+                Criar conta
+              </SmallPurpleButton>
               <SmallPinkButton onPress={() => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
