@@ -11,17 +11,29 @@ import {
 import Done from '../../assets/done.svg';
 import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
 
-const Success = () => (
-  <Container>
-    <Image>
-      <Done style={Done} />
-    </Image>
-    <Text>
-      <Title>{}</Title>
-      <Message>{}</Message>
-    </Text>
-    <LargePurpleButton>{}</LargePurpleButton>
-  </Container>
-);
+const Success = ({ navigation, route }) => {
+  const {
+    title,
+    message,
+    buttonText,
+    routeName,
+  } = route.params;
+  return (
+    <Container>
+      <Image>
+        <Done style={Done} />
+      </Image>
+      <Text>
+        <Title>{title}</Title>
+        <Message>{message}</Message>
+      </Text>
+      <LargePurpleButton
+        onPress={() => navigation.navigate(routeName)}
+      >
+        {buttonText}
+      </LargePurpleButton>
+    </Container>
+  );
+};
 
 export default Success;
