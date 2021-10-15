@@ -7,8 +7,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
+  Text,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {
   Actions,
   Container,
@@ -19,10 +21,18 @@ import {
 import ContactCard from '../../components/ContactCard';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
+import colors from '../../styles/colors';
+
+interface Contact {
+  name: string;
+  phone: string;
+}
 
 const ContactList: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const navigation = useNavigation();
+  // const [contacts, setContacts] = useState<Array<Contact>>([]);
+  const [contacts, setContacts] = useState<Array<Contact>>([{ name: 'Contact1', phone: '123' }]);
 
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
@@ -48,12 +58,17 @@ const ContactList: React.FC = () => {
             <View>
               <Title>Lista de contatos</Title>
             </View>
-            <List>
-              <ContactCard
-                name="Fernando"
-                phone="(61) 99326-9928"
-              />
-            </List>
+            {contacts && (
+              <List>
+                {contacts.map((contact, _) => (
+                  <ContactCard name={contact.name} phone={contact.phone} />
+                ))}
+              </List>
+            )}
+            <View>
+              {/* TODO Add Image */}
+              {/* TODO Add text  */}
+            </View>
             <Actions>
               <MediumWhiteButton
                 onPress={() => {
