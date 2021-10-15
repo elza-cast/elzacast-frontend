@@ -66,7 +66,7 @@ const AddContact: React.FC = () => {
           title: 'Que bom!',
           message: 'O contato foi adicionado a sua lista!',
           buttonText: 'Entendi',
-          routeName: 'AddContact',
+          routeName: 'ContactList',
         });
       } catch (err) {
         let errorMessage = '';

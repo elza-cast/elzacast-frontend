@@ -8,6 +8,7 @@ import SignIn from './screens/SignIn';
 import Success from './screens/Success';
 import SignUp from './screens/SignUp';
 import AddContact from './screens/AddContact';
+import ContactList from './screens/ContactList';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,10 @@ const Routes = () => (
       <Stack.Screen
         name="AddContact"
         component={AddContact}
+      />
+      <Stack.Screen
+        name="ContactList"
+        component={ContactList}
       />
     </Stack.Navigator>
   </NavigationContainer>
