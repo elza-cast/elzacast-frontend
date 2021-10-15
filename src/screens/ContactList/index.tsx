@@ -57,8 +57,9 @@ const ContactList: React.FC = () => {
             </View>
             {contacts && (
               <List>
-                {contacts.map((contact, _) => (
-                  <ContactCard name={contact.name} phone={contact.phone} />
+                {contacts.map((contact, key) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <ContactCard name={contact.name} phone={contact.phone} key={key} />
                 ))}
               </List>
             )}
@@ -71,7 +72,7 @@ const ContactList: React.FC = () => {
                 onPress={() => {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
-                  navigation.pop();
+                  navigation.navigate('Home');
                 }}
               >
                 Voltar
@@ -80,7 +81,7 @@ const ContactList: React.FC = () => {
                 onPress={() => {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
-                  navigation.navigate('AddContact');
+                  navigation.navigate('CreateContact');
                 }}
               >
                 Cadastrar

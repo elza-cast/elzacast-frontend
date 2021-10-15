@@ -135,7 +135,7 @@ const CreateContact: React.FC = () => {
                   onPress={() => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    navigation.pop();
+                    navigation.navigate('ContactList');
                   }}
                 >
                   Voltar
