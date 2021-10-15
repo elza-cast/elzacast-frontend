@@ -7,8 +7,8 @@ import Welcome from './screens/Welcome';
 import SignIn from './screens/SignIn';
 import Success from './screens/Success';
 import SignUp from './screens/SignUp';
-import AddContact from './screens/AddContact';
 import ContactList from './screens/ContactList';
+import CreateContact from './screens/CreateContact';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,8 +40,8 @@ const Routes = () => (
         component={Success}
       />
       <Stack.Screen
-        name="AddContact"
-        component={AddContact}
+        name="CreateContact"
+        component={CreateContact}
       />
       <Stack.Screen
         name="ContactList"
