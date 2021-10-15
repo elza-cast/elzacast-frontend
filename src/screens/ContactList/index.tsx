@@ -7,10 +7,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Text,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {
   Actions,
   Container,
@@ -21,7 +19,6 @@ import {
 import ContactCard from '../../components/ContactCard';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
-import colors from '../../styles/colors';
 
 interface Contact {
   name: string;
