@@ -30,7 +30,7 @@ interface ContactFormData {
     phone: string;
 }
 
-const AddContact: React.FC = () => {
+const CreateContact: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const phoneInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
@@ -156,4 +156,4 @@ const AddContact: React.FC = () => {
   );
 };
 
-export default AddContact;
+export default CreateContact;
