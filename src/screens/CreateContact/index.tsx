@@ -109,7 +109,6 @@ const CreateContact: React.FC = () => {
             </View>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
-                secureTextEntry
                 name="name"
                 icon="user"
                 placeholder="Nome"

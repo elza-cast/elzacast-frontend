@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../styles/colors';
 
 export const Container = styled.View`
@@ -9,26 +10,36 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid ${colors.purple};
+  padding: 5px 20px;
+    
+  border: 1px solid ${colors.gray_light};
 `;
 
 export const InfoArea = styled.View`
-  border-radius: 15px;
-  padding: 5px 25px;
-  flex-direction: column;
+  margin-left: 14px;
 `;
 
 export const Name = styled.Text`
+  font-family: "NotoSans_400Regular";
   font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  
+  color: ${colors.gray_dark};
 `;
 
 export const Phone = styled.Text`
+  font-family: "NotoSans_400Regular";
   font-size: 20px;
+  
+  color: ${colors.gray_dark};
 `;
 
 export const DeleteArea = styled.TouchableOpacity`
-  height: 100%;
-  width: 20%;
+`;
+
+export const Awesome = styled(AwesomeIcon)`
+`;
+
+export const ContactContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
 `;

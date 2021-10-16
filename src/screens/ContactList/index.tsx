@@ -14,11 +14,15 @@ import {
   Container,
   Title,
   List,
+  Awesome,
+  Paragraph,
+  BlankStage,
 } from './styles';
 
 import ContactCard from '../../components/ContactCard';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
+import colors from '../../styles/colors';
 
 interface Contact {
   name: string;
@@ -29,7 +33,7 @@ const ContactList: React.FC = () => {
   const [keyboard, setKeyboard] = useState(false);
   const navigation = useNavigation();
   // const [contacts, setContacts] = useState<Array<Contact>>([]);
-  const [contacts, setContacts] = useState<Array<Contact>>([{ name: 'Contact1', phone: '123' }]);
+  const [contacts, setContacts] = useState<Array<Contact>>([]);
 
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
@@ -53,20 +57,27 @@ const ContactList: React.FC = () => {
         >
           <Container>
             <View>
-              <Title>Lista de contatos</Title>
+              <Title>Minha lista de contatos</Title>
             </View>
-            {contacts && (
+            { contacts.length > 0 ? (
               <List>
-                {contacts.map((contact, key) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <ContactCard name={contact.name} phone={contact.phone} key={key} />
+                {contacts.map((contact) => (
+                  <ContactCard name={contact.name} phone={contact.phone} key={contact.phone} />
                 ))}
               </List>
+            ) : (
+              <BlankStage>
+                <Awesome
+                  name="users"
+                  size={130}
+                  color={colors.purple}
+                />
+                <Paragraph>
+                  {/* eslint-disable-next-line max-len */}
+                  Você ainda não possui contatos na sua lista. Adicione pessoas que você sabe que se preocupam com você e que poderiam te ajudar nos momentos difíceis.
+                </Paragraph>
+              </BlankStage>
             )}
-            <View>
-              {/* TODO Add Image */}
-              {/* TODO Add text  */}
-            </View>
             <Actions>
               <MediumWhiteButton
                 onPress={() => {

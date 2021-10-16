@@ -1,8 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import DeleteIcon from '../../assets/delete.svg';
 
 import {
   Container,
@@ -10,7 +6,10 @@ import {
   Name,
   Phone,
   DeleteArea,
+  Awesome,
+  ContactContainer,
 } from './styles';
+import colors from '../../styles/colors';
 
 interface Props {
   name: string;
@@ -22,16 +21,27 @@ const ContactCard = (props:Props) => {
 
   return (
     <Container>
-      <InfoArea>
-        <Name>
-          {name}
-        </Name>
-        <Phone>
-          {phone}
-        </Phone>
-      </InfoArea>
+      <ContactContainer>
+        <Awesome
+          name="user"
+          size={44}
+          color={colors.purple}
+        />
+        <InfoArea>
+          <Name>
+            {name}
+          </Name>
+          <Phone>
+            {phone}
+          </Phone>
+        </InfoArea>
+      </ContactContainer>
       <DeleteArea>
-        <DeleteIcon />
+        <Awesome
+          name="trash"
+          size={34}
+          color={colors.gray}
+        />
       </DeleteArea>
     </Container>
   );
