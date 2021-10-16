@@ -23,6 +23,7 @@ import LargePurpleButton from '../../components/Buttons/LargePurpleButton';
 import LargeWhiteButton from '../../components/Buttons/LargeWhiteButton';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+import { useAuth } from '../../hooks/auth';
 
 interface SignInFormData {
     phone: string;
@@ -34,6 +35,8 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
+
+  const { signIn } = useAuth();
 
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
@@ -58,10 +61,10 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        // TODO: Função SigIn será inserida aqui
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        navigation.navigate('Home');
+        await signIn({
+          telefone: data.phone,
+          senha: data.password,
+        });
       } catch (err) {
         let errorMessage = '';
 

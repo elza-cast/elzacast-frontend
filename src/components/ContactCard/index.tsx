@@ -10,14 +10,20 @@ import {
   ContactContainer,
 } from './styles';
 import colors from '../../styles/colors';
+import api from '../../services/api';
 
 interface Props {
+  id: string;
   name: string;
   phone: string;
 }
 
 const ContactCard = (props:Props) => {
-  const { name, phone } = props;
+  const { id, name, phone } = props;
+
+  async function deleteContact(contactId: string) : Promise<void> {
+    await api.delete(`/contato/${contactId}`);
+  }
 
   return (
     <Container>
@@ -36,7 +42,7 @@ const ContactCard = (props:Props) => {
           </Phone>
         </InfoArea>
       </ContactContainer>
-      <DeleteArea>
+      <DeleteArea onPress={() => deleteContact(id)}>
         <Awesome
           name="trash"
           size={34}
