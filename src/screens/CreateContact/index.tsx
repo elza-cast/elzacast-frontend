@@ -66,7 +66,7 @@ const CreateContact: React.FC = () => {
           title: 'Que bom!',
           message: 'O contato foi adicionado a sua lista!',
           buttonText: 'Entendi',
-          routeName: 'AddContact',
+          routeName: 'ContactList',
         });
       } catch (err) {
         let errorMessage = '';
@@ -109,7 +109,6 @@ const CreateContact: React.FC = () => {
             </View>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
-                secureTextEntry
                 name="name"
                 icon="user"
                 placeholder="Nome"
@@ -135,7 +134,7 @@ const CreateContact: React.FC = () => {
                   onPress={() => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    navigation.pop();
+                    navigation.navigate('ContactList');
                   }}
                 >
                   Voltar

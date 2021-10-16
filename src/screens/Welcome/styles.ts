@@ -27,6 +27,7 @@ export const Paragraph = styled.Text`
   font-weight: normal;
   font-size: 18px;
   line-height: 25px;
+  max-width: 100%;
   margin-bottom: 8%;
 
   color: ${colors.gray_dark};

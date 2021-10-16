@@ -119,7 +119,12 @@ const Home = () => {
                     <TitleButton>Alertar contatos</TitleButton>
                   </ContainerButton>
                 </AlertButton>
-                <ContactsButton>
+                <ContactsButton onPress={() =>
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                // eslint-disable-next-line implicit-arrow-linebreak
+                  navigation.navigate('ContactList')}
+                >
                   <ContainerButton>
                     <Awesome
                       name="users"
