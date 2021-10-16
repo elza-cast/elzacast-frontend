@@ -24,6 +24,8 @@ import {
 import getValidationErrors from '../../utils/getValidationErrors';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
+import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 interface ContactFormData {
     name: string;
@@ -35,6 +37,7 @@ const CreateContact: React.FC = () => {
   const phoneInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
+  const { user } = useAuth();
 
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
@@ -45,7 +48,7 @@ const CreateContact: React.FC = () => {
     });
   }, []);
 
-  const handleSignIn = useCallback(
+  const handleCreateContact = useCallback(
     async (data: ContactFormData) => {
       try {
         formRef.current?.setErrors({});
@@ -59,15 +62,24 @@ const CreateContact: React.FC = () => {
           abortEarly: false,
         });
 
-        // TODO: Função SigIn será inserida aqui
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        navigation.navigate('Success', {
-          title: 'Que bom!',
-          message: 'O contato foi adicionado a sua lista!',
-          buttonText: 'Entendi',
-          routeName: 'ContactList',
+        const response = await api.post('/contato/cadastrar', {
+          nome: data.name,
+          telefone: data.phone,
+          usuario: {
+            id: user.id,
+          },
         });
+
+        if (response.status === 201) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          navigation.navigate('Success', {
+            title: 'Que bom!',
+            message: 'O contato foi adicionado a sua lista!',
+            buttonText: 'Entendi',
+            routeName: 'ContactList',
+          });
+        }
       } catch (err) {
         let errorMessage = '';
 
@@ -107,7 +119,7 @@ const CreateContact: React.FC = () => {
             <View>
               <Title>Adicionar contato</Title>
             </View>
-            <Form ref={formRef} onSubmit={handleSignIn}>
+            <Form ref={formRef} onSubmit={handleCreateContact}>
               <Input
                 name="name"
                 icon="user"

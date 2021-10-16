@@ -4,13 +4,13 @@ import colors from '../../styles/colors';
 
 export const Container = styled.View`
   background-color: ${colors.white};
-  width: 100%;
-  height: 90px;
+  width: 335px;
   border-radius: 15px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 20px;
+  margin-bottom: 10px;
     
   border: 1px solid ${colors.gray_light};
 `;

@@ -55,3 +55,8 @@ export const BlankStage = styled.View`
   justify-content: center;
   flex: 1;
 `;
+
+export const ContainerList = styled.View`
+  align-items: center;
+  margin-bottom: 100px;
+`;

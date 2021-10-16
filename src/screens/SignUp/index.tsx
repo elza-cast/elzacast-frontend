@@ -24,6 +24,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import MediumWhiteButton from '../../components/Buttons/MediumWhiteButton';
 import MediumPurpleButton from '../../components/Buttons/MediumPurpleButton';
+import api from '../../services/api';
 
 interface SignUpFormData {
   name: string;
@@ -67,15 +68,22 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        // TODO: Função SigIn será inserida aqui
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        navigation.navigate('Success', {
-          title: 'Bem Vinda!',
-          message: 'Agora podemos te ajudar!',
-          buttonText: 'Entendi',
-          routeName: 'SignIn',
+        const response = await api.post('/usuarios/cadastrar', {
+          usuario: data.name,
+          telefone: data.phone,
+          senha: data.password,
         });
+
+        if (response.status === 201) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          navigation.navigate('Success', {
+            title: 'Bem Vinda!',
+            message: 'Agora podemos te ajudar!',
+            buttonText: 'Entendi',
+            routeName: 'SignIn',
+          });
+        }
       } catch (err) {
         let errorMessage = '';
 

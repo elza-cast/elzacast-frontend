@@ -29,8 +29,10 @@ import {
 import Background from '../../components/Background';
 import Modal from '../../components/Modal';
 import colors from '../../styles/colors';
+import { useAuth } from '../../hooks/auth';
 
 const Home = () => {
+  const { user, signOut } = useAuth();
   const navigation = useNavigation();
 
   function emergencyCall() {
@@ -60,14 +62,12 @@ const Home = () => {
           <ContentHeader>
             <TextHeader>
               Olá,
-              <TextHeaderBold> Maria</TextHeaderBold>
+              <TextHeaderBold>
+                {' '}
+                {user.usuario}
+              </TextHeaderBold>
             </TextHeader>
-            <SignOutButton onPress={() => {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              navigation.navigate('SignIn');
-            }}
-            >
+            <SignOutButton onPress={signOut}>
               <ContainerSignOut>
                 <TextHeader>Sair</TextHeader>
                 <Icon

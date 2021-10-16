@@ -5,6 +5,7 @@ import { StatusBar } from 'react-native';
 import { useFonts, NotoSans_400Regular, NotoSans_700Bold } from '@expo-google-fonts/noto-sans';
 import Routes from './src/routes';
 import Splash from './src/screens/Splash';
+import AppProvider from './src/hooks';
 
 function App() {
   const [fontsLoaded] = useFonts({
@@ -20,7 +21,9 @@ function App() {
         translucent
       />
       { fontsLoaded ? (
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       ) : <Splash /> }
     </>
   );
