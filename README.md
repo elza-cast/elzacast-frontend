@@ -76,12 +76,22 @@ $ npm install
 $ expo start
 ```
 
-### :iphone: Acessando a aplicação no celular
+### :iphone: Acessando a aplicação no celular de forma local
 Para visualizar a aplicação no seu dispositivo móvel é necessário realizar a instalação do aplicativo Expo.
 - [Android Play Store ](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) e superior.
 - [iOS App Store](https://itunes.com/apps/exponent) - iOS 10 e superior.
 
+#### Acesso de forma local
+
 Após a instalação do aplicativo, basta realizar a leitura do QRCode gerado a partir do Metro Bundler e renderizado no seu navegador padrão.
+
+#### Acesso de forma online
+
+Após a instalação do aplicativo, escaneie o QRCode abaixo:
+
+<p align="center">
+    <img src="/assets/qrcode.png">
+</p>
 
 ## :open_file_folder: Estrutura de arquivos
 
